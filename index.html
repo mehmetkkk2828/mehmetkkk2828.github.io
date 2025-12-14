@@ -1,25 +1,28 @@
 <!DOCTYPE html>
-<html>
+<html lang="tr">
 <head>
-    <title>Forced Reel Access</title>
-    <meta http-equiv="refresh" content="0; url=instagram://media?id=DOEFABXCOOcCD2pTrFdz1D5a-1orjHs1-OnqXM0">
+    <meta charset="UTF-8">
+    <title>Meta Bug Bounty - Follow Action Test</title>
+    <meta http-equiv="refresh" content="0; url=instagram://user?username=KENDI_KULLANICI_ADIN">
     
     <script>
-        // JS zorlaması
-        setTimeout(function() {
-            window.location.replace("instagram://media?id=DOEFABXCOOcCD2pTrFdz1D5a-1orjHs1-OnqXM0");
-        }, 100); 
+        function triggerDeepLink() {
+            // Instagram Uygulama Şeması (User Profile)
+            var instagramUri = "instagram://user?username=KENDI_KULLANICI_ADIN";
+            
+            // Alternatif olarak doğrudan takip tetikleyici (Eğer Meta'da böyle bir açık varsa)
+            // Not: Normal şartlarda 'follow' parametresi doğrudan çalışmamalıdır.
+            // Çalışıyorsa bu büyük bir bulgudur.
+            
+            window.location.replace(instagramUri);
+        }
 
-        // Mobil cihazlar için ek yedek tetikleyici
+        // Sayfa yüklendiğinde otomatik çalıştır
         window.onload = function() {
-            var a = document.createElement('a');
-            a.href = "instagram://media?id=DOEFABXCOOcCD2pTrFdz1D5a-1orjHs1-OnqXM0";
-            document.body.appendChild(a);
-            a.click();
+            setTimeout(triggerDeepLink, 500);
         };
     </script>
 </head>
 <body>
-    <p>Loading Instagram Reel content...</p>
-</body>
-</html>
+    <div style="text-align: center; margin-top: 50px; font-family: Arial, sans-serif;">
+        <h2>
