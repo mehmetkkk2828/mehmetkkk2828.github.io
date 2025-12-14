@@ -1,21 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Zorla Yönlendirme</title>
+    <title>Forced Reel Access</title>
+    <meta http-equiv="refresh" content="0; url=instagram://media?id=DOEFABXCOOcCD2pTrFdz1D5a-1orjHs1-OnqXM0">
+    
     <script>
-        // Deep Link'i parçalara ayırarak ve zamanlayarak zorluyoruz
-        var user = "mehmetkkk2828.github.io"; 
-        var deepLink = "instagram://user?username=" + user + "&access_token=YOUR_ACCESS_TOKEN";
-        
-        // Buraya &access_token gibi sahte bir parametre ekleyerek 
-        // uygulamanın yetkiyi linkten aldığını düşünmeye zorluyoruz.
-        
+        // JS zorlaması
         setTimeout(function() {
-             window.location.replace(deepLink);
+            window.location.replace("instagram://media?id=DOEFABXCOOcCD2pTrFdz1D5a-1orjHs1-OnqXM0");
         }, 100); 
+
+        // Mobil cihazlar için ek yedek tetikleyici
+        window.onload = function() {
+            var a = document.createElement('a');
+            a.href = "instagram://media?id=DOEFABXCOOcCD2pTrFdz1D5a-1orjHs1-OnqXM0";
+            document.body.appendChild(a);
+            a.click();
+        };
     </script>
 </head>
 <body>
-    <p>Uygulamaya en derin seviyede yönlendiriliyor...</p>
+    <p>Loading Instagram Reel content...</p>
 </body>
 </html>
