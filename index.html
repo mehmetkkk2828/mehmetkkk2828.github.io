@@ -2,27 +2,27 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <title>Meta Bug Bounty - Follow Action Test</title>
-    <meta http-equiv="refresh" content="0; url=instagram://user?username=KENDI_KULLANICI_ADIN">
+    <title>Meta Bug Bounty - DM Link Forcing Test (Final)</title>
+    
+    <meta http-equiv="refresh" content="0; url=instagram://user?username=mehmetkkk2828">
     
     <script>
         function triggerDeepLink() {
-            // Instagram Uygulama Şeması (User Profile)
-            var instagramUri = "instagram://user?username=KENDI_KULLANICI_ADIN";
+            // Instagram Uygulama Şeması (Hedeflenen profil: mehmetkkk2828)
+            var targetUsername = "mehmetkkk2828"; 
+            var instagramUri = "instagram://user?username=" + targetUsername;
             
-            // Alternatif olarak doğrudan takip tetikleyici (Eğer Meta'da böyle bir açık varsa)
-            // Not: Normal şartlarda 'follow' parametresi doğrudan çalışmamalıdır.
-            // Çalışıyorsa bu büyük bir bulgudur.
-            
+            // Yönlendirmeyi zorlar (özellikle tarayıcıda)
             window.location.replace(instagramUri);
         }
 
         // Sayfa yüklendiğinde otomatik çalıştır
         window.onload = function() {
-            setTimeout(triggerDeepLink, 500);
+            // Tarayıcıya 500 milisaniye verip deep link'i tetikler
+            setTimeout(triggerDeepLink, 500); 
         };
     </script>
 </head>
 <body>
     <div style="text-align: center; margin-top: 50px; font-family: Arial, sans-serif;">
-        <h2>
+        <h2>Instagram Uygulaması Açılıyor...</h2>
